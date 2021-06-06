@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='forms.css')}}">
+</head>
+<body>
+    <h1 align='center'>Signup</h1>
+
+    <form align='center' method="post">
+        <input type="text" autocomplete="off" name="name" placeholder="Name" id=""><br><br>
+        <input type="text" autocomplete="off" name="username" placeholder="Username" id=""><br><br>
+        <input type="email" autocomplete="off" name="email" placeholder="Email Address" id=""><br><br>
+        <input type="password" name="password" id="" placeholder="Password"><br><br>
+        <button type="submit">Signup</button><br><br>
+        <a href="/login">Already have an account? Login here!</a>
+    </form>
+</body>
+</html>

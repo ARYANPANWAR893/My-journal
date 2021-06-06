@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}{{user.name}}{% endblock %}
+{% block body %}
+
+<style>
+    
+    textarea{
+        padding: 10px;
+        font-family: monospace;
+        outline: none;
+        color: white;
+        font-size: 20px;
+        resize: vertical;
+        height: 200px;
+        width: 80%;
+        border: 2px solid grey;
+        border-radius: 22px;
+        background: transparent;
+    }
+    button{
+        border-radius: 22px;
+        color: white;
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        outline: none;
+        border: none;
+        border: 4px solid white;
+        font-size: 20px;
+        padding: 10px 30px;
+    }
+
+    .add-margin * {
+        margin: 15px;
+    }
+
+    .display {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+</style>
+<br>
+<div align='center'>
+    <img class="display" src="{{url_for('static', filename='person.jpg')}}">
+    <h3>{{user.name}}</h3>
+    <div style="display: flex; justify-content: center;">
+        <div style="padding-right: 30px;">
+            <h2>{{user.get_following_num(user.username)}}</h2>
+            <h3>Followers</h3>
+        </div>
+        <div style="padding-left: 30px;">
+            <h2>{{user.get_followers_num(user.username)}}</h2>
+            <h3>Following</h3>
+        </div>
+    </div>
+</div>
+<div class="add-margin" style="width: 100%; display: flex; justify-content: center;">
+    <a href="/profile/notes"><img
+            style="height: 50px;padding: 5px; width: 50px; border: 3px solid rgb(0, 0, 0); border-radius: 50%;"
+            src="{{url_for('static', filename='diary.png')}}" alt=""></a>
+        <a href="/profile"><img
+                style="height: 50px;padding: 5px; width: 50px; border: 3px solid white; border-radius: 50%;"
+                src="{{url_for('static', filename='quill-pen.png')}}" alt=""></a>
+</div>
+<br>
+<form method="POST" align='center'>
+    <textarea name="bio" placeholder="Bio!">{{user.bio|safe}}</textarea><br><br>
+    <button type="submit">Edit Profile</button>
+</form>
+<br><br><br>
+{% endblock %}

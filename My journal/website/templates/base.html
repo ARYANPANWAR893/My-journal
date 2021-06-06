@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journal - {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: black;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-family: 'Parisienne', cursive;
+            font-size: 35px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            padding: 0px 20px;
+            justify-content: space-around;
+        }
+
+        .pp {
+            height: 50px;
+            width: 50px;
+            border-radius: 10px;
+        }
+
+        footer>a>img {
+            filter: invert(100%);
+            margin: 10px;
+            height: 30px;
+            width: 30px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            nav {
+                justify-content: space-between;
+            }
+
+            footer {
+                padding-top: 5px;
+                border-top: 3px solid;
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                position: fixed;
+                background-color: black;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+        }
+    </style>
+
+    <nav>
+        <h1 class="logo"><a class="logo" style="background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); -webkit-background-clip: text; padding: 5px; -webkit-text-fill-color: transparent;" href="/">My Journal</a></h1>
+        <footer>
+            <a href="/"><img src="{{url_for('static', filename='home.png')}}" alt=""></a>
+            <a href="/explore"><img src="{{url_for('static', filename='search.png')}}" alt=""></a>
+            <a href="/new-note"><img src="{{url_for('static', filename='new.png')}}" alt=""></a>
+            <a href="/notifications"><img src="{{url_for('static', filename='notifications.png')}}" alt=""></a>
+            <a href="/profile"><img src="{{url_for('static', filename='settings.png')}}" alt=""></a>
+        </footer>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}{{note.name}}{% endblock %}
+{% block body %}
+<style>
+    .bar{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .bar *{
+        height: 50px;
+        width: 50px;
+    }
+    .bar img{
+        filter: invert(100%);
+    }
+    .title {
+        font-size: 2.5em;
+        font-family: monospace;
+    }
+
+    .descr {
+        font-family: monospace;
+        font-size: 1.5em;
+    }
+</style>
+{% if like=='T' %}
+<style>
+    .like{
+        background-color: rgb(0, 0, 0);
+    }
+</style>
+{% endif %}
+{% if save=='T' %}
+<style>
+    .save{
+        background-color: rgb(0, 0, 0);
+    }
+</style>
+{% endif %}
+<div align='center'>
+    <img style="border-radius: 22px; width: 90%; max-width: 800px; margin: auto;"
+        src="https://source.unsplash.com/1600x900/?{{note.tags}}" alt="">
+    <h1 class="title">{{note.name|safe}}</h1>
+    <p class="descr">{{note.code|safe}}</p>
+</div>
+<br>
+<div class="bar">
+    <div align='center'><a href="like"><img class="like" src="{{url_for('static', filename='like.png')}}" alt=""></a><h4>{{note.get_likes_num(note.id)}}</h4></div>
+    <div align='center'><a href="save"><img class="save" src="{{url_for('static', filename='save.png')}}" alt=""></a><h4>{{note.get_saves_num(note.id)}}</h4></div>
+</div>
+<br><br>
+<form align='center' method="post">
+    <input autocomplete="off" style="width: calc(90% - 32px);outline:none;padding: 15px;font-size: 20px;font-family: monospace; border: none; border-bottom: 6px solid white; color: white; background-color: black;" type="text" name="comment">
+    <button style="padding: 15px; width: 20px; font-size: 20px; background-color: black; color: rgb(5, 155, 255); border: none;" type="submit">Post</button>
+</form>
+<br>
+{% for comment in comments %}
+<div align='center'><h4 style="font-family: monospace; font-size: 20px;"><a href="/profile/{{comment.user_name}}" style="color: white;">{{comment.user_name}}</a> : {{comment.comment}}</h4></div>
+{% endfor %}
+<br><br><br>
+{% endblock %}

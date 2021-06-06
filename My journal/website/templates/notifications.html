@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Notifications{% endblock %}
+{% block body %}
+
+{% for notification in notifications|reverse %}
+
+<h4 align='center'>{{notification.message}}</h4>
+
+{% endfor %}
+<br><br>
+{% endblock %}

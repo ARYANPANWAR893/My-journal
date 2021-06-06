@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}New Note{% endblock %}
+{% block body %}
+
+<style>
+    textarea{
+        padding: 10px;
+        font-family: monospace;
+        outline: none;
+        color: white;
+        font-size: 20px;
+        resize: vertical;
+        height: 200px;
+        width: 90%;
+        background: transparent;
+    }
+    input{
+        font-family: monospace;
+        padding: 10px;
+        outline: none;
+        color: white;
+        width: 90%;
+        background: transparent;
+        border: none;
+        font-size: 16px;
+        border-bottom: 5px solid;
+    }
+    button{
+        border-radius: 22px;
+        color: white;
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        outline: none;
+        border: none;
+        font-size: 20px;
+        padding: 10px 30px;
+    }
+</style>
+<br>
+<h1 align='center'>NEW POST</h1>
+
+<form align='center' method="post">
+    <input style="font-size: 30px;" autocapitalize="characters" autocomplete="off" type="text" placeholder="Title" name="title" id=""><br><br><br>
+    <textarea name="note" placeholder="Text"></textarea><br><br>
+    <input placeholder="Tags" type="text" name="tags" autocomplete="off" id=""><br><br>
+    <button type="submit">Submit</button>
+</form>
+<br><br><br>
+{% endblock %}
